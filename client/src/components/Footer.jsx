@@ -22,6 +22,7 @@ const Footer = () => {
               font-weight="bold"
               font-size="28"
               fill="#5044E5"
+              onClick={() => navigate("/")}
             >
               Genova.ai
             </text>

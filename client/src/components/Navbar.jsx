@@ -19,12 +19,14 @@ const Navbar = () => {
         <text
           x="50%"
           y="50%"
-          dominant-baseline="middle"
-          text-anchor="middle"
-          font-family="Arial, Helvetica, sans-serif"
-          font-weight="bold"
-          font-size="42"
+          dominantBaseline="middle"
+          textAnchor="middle"
+          fontFamily="Arial, Helvetica, sans-serif"
+          fontWeight="bold"
+          fontSize="42"
           fill="#5044E5"
+          className="cursor-pointer"
+          onClick={() => navigate("/")}
         >
           Genova.ai
         </text>
