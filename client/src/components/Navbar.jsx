@@ -1,14 +1,38 @@
-import { assets } from "../assets/assets";
 import { useNavigate } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { useClerk, UserButton, useUser } from "@clerk/clerk-react";
+import { useEffect, useState, useRef } from "react";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const { user } = useUser();
   const { openSignIn } = useClerk();
+
+  const [showNavbar, setShowNavbar] = useState(true);
+  const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      if (currentScrollY > lastScrollY.current && currentScrollY > 50) {
+        setShowNavbar(false);
+      } else {
+        setShowNavbar(true);
+      }
+      lastScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <div className="fixed z-5 w-full backdrop-blur-2xl flex justify-between items-center py-3 px-4 sm:px-20 xl:px-32">
+    <div
+      className={`fixed z-5 w-full backdrop-blur-2xl flex justify-between items-center py-3 px-4 sm:px-20 xl:px-32 transition-transform duration-300 ${
+        showNavbar ? "translate-y-0" : "-translate-y-full"
+      }`}
+      style={{ WebkitBackfaceVisibility: "hidden" }}
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="300"
@@ -39,7 +63,7 @@ const Navbar = () => {
           onClick={openSignIn}
           className="flex items-center gap-2 rounded-full text-sm cursor-pointer bg-primary text-white px-10 py-2.5"
         >
-          Get started <ArrowRight className="w-4 h-4" />{" "}
+          Get started <ArrowRight className="w-4 h-4" />
         </button>
       )}
     </div>

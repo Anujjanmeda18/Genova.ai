@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import Sidebar from "../components/Sidebar";
 import { useUser, SignIn } from "@clerk/clerk-react";
@@ -9,6 +9,19 @@ const Layout = () => {
   const navigate = useNavigate();
   const [sidebar, setSidebar] = useState(false);
   const { user } = useUser();
+
+  // Prevent body scroll when sidebar open on small screens
+  useEffect(() => {
+    if (sidebar) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [sidebar]);
 
   return user ? (
     <div className="flex flex-col items-start justify-start h-screen">
@@ -49,9 +62,16 @@ const Layout = () => {
         )}
       </nav>
 
-      <div className="flex-1 w-full flex h-[calc(100vh-64px)]">
+      <div className="flex-1 w-full flex h-[calc(100vh-64px)] relative">
+        {/* Sidebar panel for small screens: fixed and slides in/out */}
         <Sidebar sidebar={sidebar} setSidebar={setSidebar} />
-        <div className="flex-1 bg-[#F4F7FB]">
+
+        {/* Main content shifts right when sidebar is open on small screens */}
+        <div
+          className={`flex-1 bg-[#F4F7FB] transition-all duration-300 ease-in-out relative z-0
+            ${sidebar ? "translate-x-60" : "translate-x-0"} 
+            sm:translate-x-0 sm:ml-0`}
+        >
           <Outlet />
         </div>
       </div>

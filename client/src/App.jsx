@@ -10,6 +10,7 @@ import RemoveObject from "./pages/RemoveObject";
 import ReviewResume from "./pages/ReviewResume";
 import Community from "./pages/Community";
 import { Toaster } from "react-hot-toast";
+import DemoPage from "./pages/WatchDemo";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
       <Toaster />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/demo" element={<DemoPage />} />
         <Route path="/ai" element={<Layout />}>
           <Route index element={<Dashboard />} />
           <Route path="write-article" element={<WriteArticle />} />

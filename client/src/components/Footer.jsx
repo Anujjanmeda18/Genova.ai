@@ -2,7 +2,7 @@ import { assets } from "../assets/assets";
 
 const Footer = () => {
   return (
-    <div className="text-gray-500/80 pt-8 px-6 md:px-16 lg:px-24 xl:px-32">
+    <footer className="text-gray-500/80 pt-8 px-6 md:px-16 lg:px-24 xl:px-32">
       <div className="flex flex-wrap justify-between gap-12 md:gap-6">
         {/* Brand info */}
         <div className="max-w-80">
@@ -16,24 +16,22 @@ const Footer = () => {
             <text
               x="50%"
               y="50%"
-              dominant-baseline="middle"
-              text-anchor="middle"
-              font-family="Arial, Helvetica, sans-serif"
-              font-weight="bold"
-              font-size="28"
+              dominantBaseline="middle"
+              textAnchor="middle"
+              fontFamily="Arial, Helvetica, sans-serif"
+              fontWeight="bold"
+              fontSize="28"
               fill="#5044E5"
-              onClick={() => navigate("/")}
             >
               Genova.ai
             </text>
           </svg>
-
-          <p className="text-sm">
-            Genova.ai helps you create high-quality content with AI — from
-            articles and blogs to visuals and resumes — faster and smarter.
+          <p className="text-sm mt-2">
+            Genova.ai empowers you to craft high-quality content with the magic
+            of AI — from articles and blogs to stunning visuals and job-winning
+            resumes. Fast. Smart. Effortless.
           </p>
           <div className="flex items-center gap-3 mt-4">
-            {/* Instagram */}
             <a
               href="https://www.instagram.com/anuj_janmeda18/"
               target="_blank"
@@ -47,7 +45,6 @@ const Footer = () => {
                 <path d="M7.75 2A5.75 5.75 0 002 7.75v8.5A5.75 5.75 0 007.75 22h8.5A5.75 5.75 0 0022 16.25v-8.5A5.75 5.75 0 0016.25 2h-8.5zM4.5 7.75A3.25 3.25 0 017.75 4.5h8.5a3.25 3.25 0 013.25 3.25v8.5a3.25 3.25 0 01-3.25 3.25h-8.5a3.25 3.25 0 01-3.25-3.25v-8.5zm9.5 1a4 4 0 11-4 4 4 4 0 014-4zm0 1.5a2.5 2.5 0 102.5 2.5 2.5 2.5 0 00-2.5-2.5zm3.5-.75a.75.75 0 11.75-.75.75.75 0 01-.75.75z" />
               </svg>
             </a>
-            {/* GitHub */}
             <a
               href="https://github.com/Anujjanmeda18"
               target="_blank"
@@ -61,25 +58,23 @@ const Footer = () => {
                 <path
                   fillRule="evenodd"
                   d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 
-      8.205 11.385.6.113.82-.262.82-.582 
-      0-.287-.012-1.243-.018-2.255-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.09-.745.083-.73.083-.73 
-      1.205.084 1.84 1.237 1.84 1.237 
-      1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.304.762-1.604-2.665-.304-5.466-1.332-5.466-5.93 
-      0-1.31.468-2.382 1.236-3.22-.124-.303-.536-1.524.118-3.176 
-      0 0 1.008-.322 3.3 1.23a11.5 11.5 0 013.003-.404c1.02.005 
-      2.047.138 3.003.404 2.29-1.552 3.297-1.23 
-      3.297-1.23.655 1.652.243 2.873.12 3.176.77.838 
-      1.235 1.91 1.235 3.22 0 4.61-2.803 5.624-5.475 
-      5.922.43.37.823 1.103.823 2.222 
-      0 1.604-.014 2.896-.014 3.286 
-      0 .322.218.7.825.58C20.565 21.796 
-      24 17.297 24 12c0-6.63-5.37-12-12-12z"
+                  8.205 11.385.6.113.82-.262.82-.582 
+                  0-.287-.012-1.243-.018-2.255-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.757-1.333-1.757-1.09-.745.083-.73.083-.73 
+                  1.205.084 1.84 1.237 1.84 1.237 
+                  1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.304.762-1.604-2.665-.304-5.466-1.332-5.466-5.93 
+                  0-1.31.468-2.382 1.236-3.22-.124-.303-.536-1.524.118-3.176 
+                  0 0 1.008-.322 3.3 1.23a11.5 11.5 0 013.003-.404c1.02.005 
+                  2.047.138 3.003.404 2.29-1.552 3.297-1.23 
+                  3.297-1.23.655 1.652.243 2.873.12 3.176.77.838 
+                  1.235 1.91 1.235 3.22 0 4.61-2.803 5.624-5.475 
+                  5.922.43.37.823 1.103.823 2.222 
+                  0 1.604-.014 2.896-.014 3.286 
+                  0 .322.218.7.825.58C20.565 21.796 
+                  24 17.297 24 12c0-6.63-5.37-12-12-12z"
                   clipRule="evenodd"
                 />
               </svg>
             </a>
-
-            {/* LinkedIn */}
             <a
               href="https://linkedin.com"
               target="_blank"
@@ -157,7 +152,6 @@ const Footer = () => {
               <svg
                 className="w-4 h-4 text-white"
                 aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
               >
@@ -190,7 +184,22 @@ const Footer = () => {
           </li>
         </ul>
       </div>
-    </div>
+      <div className="py-4 text-center text-xs text-gray-400 font-medium">
+        Built with passion and next-gen AI by{" "}
+        <a href="https://www.instagram.com/anuj_janmeda18/" className="text-primary font-semibold">Anuj Kumar Janmeda</a>.<br />
+        Handcrafted in India, hustled globally. If you love Genova.ai, connect
+        with{" "}
+        <a
+          className="underline hover:text-primary"
+          href="https://www.instagram.com/anuj_janmeda18/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Anuj
+        </a>{" "}
+        for feedback, ideas, or pure nerd talk!
+      </div>
+    </footer>
   );
 };
 
