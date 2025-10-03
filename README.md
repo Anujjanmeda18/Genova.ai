@@ -52,9 +52,13 @@ Welcome to **Genova.ai**, your ultimate creative partner that supercharges conte
 npm install
 
 3. **Configure environment variables:**
+   
 Create `.env` file with:
+
 for client:-
-VITE_BASE_URL=https://your-backend-api-url.com
+VITE_CLERK_PUBLISHABLE_KEY=pk_test_xxxxxxxxxxxxxxxxx
+VITE_BASE_URL=http://localhost:3000
+
 for Server:-
 DATABASE_URL=postgresql://<USER>:<PASSWORD>@<HOST>/<DB_NAME>?sslmode=require&channel_binding=require
 CLERK_PUBLISHABLE_KEY=pk_test_xxxxxxxxxxxxxxxxx
@@ -65,10 +69,10 @@ CLOUDINARY_CLOUD_NAME=your_cloud_name
 CLOUDINARY_API_KEY=xxxxxxxxxxxxxxxxxxxx
 CLOUDINARY_API_SECRET=xxxxxxxxxxxxxxxxxxxxxxxxxx
 
-4. **Start server:**
+5. **Start server:**
 npm run server
 
-5. **Run production build:**
+6. **Run production build:**
 npm run dev
 
 
