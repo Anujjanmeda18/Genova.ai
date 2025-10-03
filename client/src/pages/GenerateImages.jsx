@@ -35,22 +35,15 @@ const GenerateImages = () => {
     "A modern minimalist living room with natural lighting",
   ];
 
-  // State for selected art style
   const [selectedStyle, setSelectedStyle] = useState(imageStyle[0].name);
-  // Image prompt input
   const [input, setInput] = useState("");
-  // Publish toggle state
   const [publish, setPublish] = useState(false);
-  // Loading state during image generation
   const [loading, setLoading] = useState(false);
-  // Generated image URL/content
   const [content, setContent] = useState("");
-  // Copy feedback state
   const [copied, setCopied] = useState(false);
 
   const { getToken } = useAuth();
 
-  // Handle form submission for generating image
   const onSubmitHandler = async (e) => {
     e.preventDefault();
 
@@ -81,7 +74,6 @@ const GenerateImages = () => {
     setLoading(false);
   };
 
-  // Copy image URL to clipboard
   const handleCopy = () => {
     navigator.clipboard.writeText(content);
     setCopied(true);
@@ -89,7 +81,6 @@ const GenerateImages = () => {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  // Download generated image as a PNG file
   const handleDownload = async () => {
     try {
       const response = await fetch(content);
@@ -108,7 +99,6 @@ const GenerateImages = () => {
     }
   };
 
-  // Regenerate image with current prompt & options
   const handleRegenerate = () => {
     if (input.trim()) {
       onSubmitHandler({ preventDefault: () => {} });
@@ -129,12 +119,14 @@ const GenerateImages = () => {
                 AI Image Generator
               </h1>
             </div>
-            <p className="text-gray-600">Transform your ideas into stunning visuals with AI</p>
+            <p className="text-gray-600">
+              Transform your ideas into stunning visuals with AI
+            </p>
           </div>
 
-          {/* Main Content Grid: Limit height & setup scrolling */}
+          {/* Main Content Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-[calc(100vh-14rem)]">
-            {/* Left Column: Configuration - scrollable */}
+            {/* Left Column: Configuration */}
             <div className="space-y-6 overflow-y-auto">
               <form
                 onSubmit={onSubmitHandler}
@@ -144,7 +136,9 @@ const GenerateImages = () => {
                 <div className="bg-gradient-to-r from-green-500 to-emerald-600 p-6">
                   <div className="flex items-center gap-3 text-white">
                     <Sparkles className="w-6 h-6" />
-                    <h2 className="text-xl font-semibold">Image Configuration</h2>
+                    <h2 className="text-xl font-semibold">
+                      Image Configuration
+                    </h2>
                   </div>
                 </div>
 
@@ -170,7 +164,9 @@ const GenerateImages = () => {
 
                   {/* Example Prompts */}
                   <div>
-                    <p className="text-xs font-medium text-gray-500 mb-2">Try These Examples:</p>
+                    <p className="text-xs font-medium text-gray-500 mb-2">
+                      Try These Examples:
+                    </p>
                     <div className="space-y-2">
                       {examplePrompts.map((prompt, index) => (
                         <button
@@ -233,8 +229,12 @@ const GenerateImages = () => {
                           <Eye className="w-5 h-5 text-green-600" />
                         </div>
                         <div>
-                          <p className="text-sm font-semibold text-gray-900">Make Public</p>
-                          <p className="text-xs text-gray-600">Share with the community</p>
+                          <p className="text-sm font-semibold text-gray-900">
+                            Make Public
+                          </p>
+                          <p className="text-xs text-gray-600">
+                            Share with the community
+                          </p>
                         </div>
                       </div>
                       <label className="relative cursor-pointer">
@@ -284,11 +284,15 @@ const GenerateImages = () => {
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-green-500 mt-1">•</span>
-                    <span>Include lighting conditions for realistic images</span>
+                    <span>
+                      Include lighting conditions for realistic images
+                    </span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-green-500 mt-1">•</span>
-                    <span>Experiment with different art styles for variety</span>
+                    <span>
+                      Experiment with different art styles for variety
+                    </span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-green-500 mt-1">•</span>
@@ -299,9 +303,7 @@ const GenerateImages = () => {
             </div>
 
             {/* Right Column: Generated Image - scrollable */}
-            <div
-              className="bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col overflow-hidden overflow-y-auto min-h-0"
-            >
+            <div className="bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col overflow-hidden overflow-y-auto min-h-0 max-h-[600px]">
               {/* Header */}
               <div className="bg-gradient-to-r from-emerald-500 to-green-600 p-6">
                 <div className="flex items-center justify-between text-white">
@@ -318,14 +320,20 @@ const GenerateImages = () => {
                         className="p-2 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200 disabled:opacity-50"
                         title="Regenerate"
                       >
-                        <RefreshCw className={`w-4 h-4 ${loading ? "animate-spin" : ""}`} />
+                        <RefreshCw
+                          className={`w-4 h-4 ${loading ? "animate-spin" : ""}`}
+                        />
                       </button>
                       <button
                         onClick={handleCopy}
                         className="p-2 rounded-lg bg-white/20 hover:bg-white/30 transition-all duration-200"
                         title="Copy URL"
                       >
-                        {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+                        {copied ? (
+                          <Check className="w-4 h-4" />
+                        ) : (
+                          <Copy className="w-4 h-4" />
+                        )}
                       </button>
                       <button
                         onClick={handleDownload}
@@ -340,7 +348,7 @@ const GenerateImages = () => {
               </div>
 
               {/* Content Area */}
-              <div className="flex-1 p-6 min-h-0 max-h-[600px] overflow-y-auto custom-scrollbar">
+              <div className="flex-1 p-6 overflow-y-auto max-h-[500px] custom-scrollbar">
                 {!content && !loading ? (
                   <div className="h-full flex flex-col justify-center items-center text-gray-400">
                     <div className="w-24 h-24 bg-gradient-to-br from-gray-100 to-green-100 rounded-2xl flex items-center justify-center mb-4 shadow-inner">
@@ -350,7 +358,8 @@ const GenerateImages = () => {
                       Ready to Create Magic?
                     </p>
                     <p className="text-xs text-center max-w-xs text-gray-500">
-                      Describe your image and click "Generate Image" to bring your vision to life
+                      Describe your image and click "Generate Image" to bring
+                      your vision to life
                     </p>
                   </div>
                 ) : loading ? (
@@ -359,32 +368,37 @@ const GenerateImages = () => {
                       <div className="w-20 h-20 border-4 border-gray-200 border-t-green-500 rounded-full animate-spin" />
                       <Sparkles className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 text-green-500 animate-pulse" />
                     </div>
-                    <p className="text-gray-600 font-semibold text-lg mb-2">Creating your masterpiece...</p>
-                    <p className="text-sm text-gray-500">This may take 10-30 seconds</p>
+                    <p className="text-gray-600 font-semibold text-lg mb-2">
+                      Creating your masterpiece...
+                    </p>
+                    <p className="text-sm text-gray-500">
+                      This may take 10-30 seconds
+                    </p>
                     <div className="mt-4 flex items-center gap-2">
-                      <div className="w-2 h-2 bg-green-500 rounded-full animate-bounce" style={{ animationDelay: "0ms" }}></div>
-                      <div className="w-2 h-2 bg-green-500 rounded-full animate-bounce" style={{ animationDelay: "150ms" }}></div>
-                      <div className="w-2 h-2 bg-green-500 rounded-full animate-bounce" style={{ animationDelay: "300ms" }}></div>
+                      <div
+                        className="w-2 h-2 bg-green-500 rounded-full animate-bounce"
+                        style={{ animationDelay: "0ms" }}
+                      ></div>
+                      <div
+                        className="w-2 h-2 bg-green-500 rounded-full animate-bounce"
+                        style={{ animationDelay: "150ms" }}
+                      ></div>
+                      <div
+                        className="w-2 h-2 bg-green-500 rounded-full animate-bounce"
+                        style={{ animationDelay: "300ms" }}
+                      ></div>
                     </div>
                   </div>
                 ) : (
                   <div className="h-full flex flex-col animate-fadeIn">
-                    <div className="relative group rounded-xl overflow-hidden shadow-2xl">
+                    <div className="relative group rounded-xl overflow-y-auto max-h-[400px] shadow-2xl bg-black">
                       <img
                         src={content}
                         alt="Generated content"
-                        className="w-full h-auto rounded-xl transition-transform duration-300 group-hover:scale-105"
+                        className="w-full block"
+                        style={{ maxHeight: "none" }}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    </div>
-                    <div className="mt-4 p-4 bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl border border-green-200">
-                      <div className="flex items-center gap-2 text-sm text-green-800">
-                        <Check className="w-4 h-4 text-green-600" />
-                        <span className="font-medium">Image generated successfully!</span>
-                      </div>
-                      <p className="text-xs text-green-700 mt-1">
-                        Style: <span className="font-semibold">{selectedStyle}</span>
-                      </p>
                     </div>
                   </div>
                 )}
